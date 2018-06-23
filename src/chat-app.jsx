@@ -30,7 +30,7 @@ class ChatApp extends React.Component {
           </Bubble>
         </Flex>
         <Flex className="editor-space" margin="0" padding="0" align="center" justify="center">
-          <Field fieldType="textarea"/>
+          <Field fieldType="textarea" onChange={() => null}/>
         </Flex>
       </Flex>
     )
