@@ -5,7 +5,7 @@ function messagesReducer(state = initialState, action) {
   switch (action.type) {
     case ActionTypes.addMessage: {
       const stateClone = [].concat(state);
-      stateClone.push(action.payload);
+      stateClone.unshift(action.payload);
       return stateClone;
     }
       break;

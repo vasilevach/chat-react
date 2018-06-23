@@ -2,6 +2,8 @@ import * as React from 'react';
 import { connect } from 'react-redux';
 import { Bubble, Flex, Field } from './components/ui';
 
+import { getUserById, getDateByTimestamp, getUserStatusById } from './utils/utils';
+
 import * as Actions from './actions/actions';
 
 import './chat-app.scss';
@@ -27,37 +29,35 @@ class ChatApp extends React.Component {
     if (event.key === KEY.ENTER) {
       event.preventDefault();
       if (message !== '') {
-        this.props.onMessageSubmit(message);
+        this.setState({
+          message: ''
+        }, () => this.props.onMessageSubmit(message));
       }
     }
   }
 
   render() {
+    const { messages, users, user } = this.props;
+    const { message } = this.state;
     return (
       <Flex className="chat-body" margin="none">
         <Flex className="conversation" direction="column-reverse">
-          <Bubble author="Chris" time="1529739254" state="self">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-            Duis tincidunt ex et arcu laoreet suscipit.
-            Sed non viverra diam. Phasellus eleifend pretium mi et blandit.
-            Ut augue nisl, luctus et justo non, molestie blandit purus.
-          </Bubble>
-          <Bubble author="Mike" time="1529739254" state="other">
-            Phasellus eleifend pretium mi et blandit.
-            Ut augue nisl, luctus et justo non, molestie blandit purus.
-          </Bubble>
-          <Bubble author="Mike" time="1529739254" state="other">
-            Phasellus eleifend pretium mi et blandit.
-            Ut augue nisl, luctus et justo non, molestie blandit purus.
-          </Bubble>
-          <Bubble author="Mike" time="1529739254" state="other">
-            Phasellus eleifend pretium mi et blandit.
-            Ut augue nisl, luctus et justo non, molestie blandit purus.
-          </Bubble>
+          {
+            messages.map((message, i) => (
+              <Bubble
+                key={i}
+                author={getUserById(message.user, users)}
+                time={getDateByTimestamp(message.timestamp)}
+                state={getUserStatusById(message.user, user)}>
+                {message.message}
+              </Bubble>
+            ))
+          }
         </Flex>
-        <Flex className="editor-space" margin="0" padding="0" align="center" justify="center">
+        <Flex className="editor-space" margin="none" padding="none" align="center" justify="center">
           <Field
             fieldType="textarea"
+            value={message}
             onChange={this.handleMessageType}
             onKeyDown={this.handleKeyDown}
           />
@@ -67,4 +67,10 @@ class ChatApp extends React.Component {
   }
 }
 
-export default connect(null, Actions)(ChatApp)
+const mapStateToProps = (state) => ({
+  messages: state.messages,
+  users: state.users,
+  user: state.user
+});
+
+export default connect(mapStateToProps, Actions)(ChatApp)

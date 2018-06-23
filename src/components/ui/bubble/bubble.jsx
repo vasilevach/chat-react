@@ -14,7 +14,7 @@ function Bubble({ author, className, children, time, state, ...props }) {
   return (
     <Flex margin="small" className="bubble-wrap" {...flexProps}>
       <Flex align="center" margin='none' padding='none' className="bubble__title" {...titleProps}>
-        <Text size="small" align="right" color="medium" >{author}: &nbsp;</Text>
+        <Text size="small" align="right" color="light" >{author}: &nbsp;</Text>
         <Text size="x-small" color="light">({time})</Text>
       </Flex>
       <Flex margin="none" className={classes} {...props}>

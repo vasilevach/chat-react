@@ -8,7 +8,6 @@ function* handleOnMessageSubmit({ payload }, socket) {
   const { message } = payload;
   const validCommandType = getMessageIfIsValidCommand(message);
 
-
   // first check if the message we try to send is a valid command:
   if (validCommandType) {
     switch(validCommandType) {
