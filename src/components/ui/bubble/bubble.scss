@@ -3,8 +3,24 @@
 .bubble-wrap {
   // put intended :)
   width: 100%;
+  margin-bottom: $spacing-small;
 }
 
 .bubble {
   max-width: 300px;
+  padding-top: $spacing-medium;
+  padding-bottom: $spacing-medium;
+  border-radius: $radius-medium;
+
+  &--self {
+    background-color: $primary;
+  }
+
+  &--other {
+    background-color: $secondary;
+  }
+}
+
+.bubble__title {
+  width: 100%;
 }

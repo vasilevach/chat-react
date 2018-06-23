@@ -19,6 +19,14 @@ class ChatApp extends React.Component {
           Phasellus eleifend pretium mi et blandit.
           Ut augue nisl, luctus et justo non, molestie blandit purus.
         </Bubble>
+        <Bubble author="Mike" time="1529739254" state="other">
+          Phasellus eleifend pretium mi et blandit.
+          Ut augue nisl, luctus et justo non, molestie blandit purus.
+        </Bubble>
+        <Bubble author="Mike" time="1529739254" state="other">
+          Phasellus eleifend pretium mi et blandit.
+          Ut augue nisl, luctus et justo non, molestie blandit purus.
+        </Bubble>
       </Flex>
     )
   }

@@ -1,13 +1,25 @@
 // Some constants
 
+
+// fonts:
 $font-x-small: 9px;
 $font-small: 12px;
-$font-medium: 16px;
+$font-medium: 14px;
 $font-large: 24px;
+
+$line-height-modifier: 5px;
+
+$line-height-x-small: $font-x-small + $line-height-modifier;
+$line-height-small: $font-small + $line-height-modifier;
+$line-height-medium: $font-medium + $line-height-modifier;
+$line-height-large: $font-large + $line-height-modifier;
 
 // colors:
 $font-color-light: #ccc;
 $font-color-regular: #333;
+
+$primary: #add8e6;
+$secondary: #fffee1;
 
 // background colors:
 $body-background: #f1f1f1;
@@ -18,3 +30,6 @@ $spacing-default: 5px;
 $spacing-small: $spacing-default * 1;
 $spacing-medium: $spacing-default * 2;
 $spacing-large: $spacing-default * 4;
+
+// border radius:
+$radius-medium: 15px;

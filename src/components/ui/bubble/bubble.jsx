@@ -12,14 +12,14 @@ function Bubble({ author, className, children, time, state, ...props }) {
   const titleProps = state === 'self' ? { justify: 'flex-end' } : { justify: 'flex-start' };
 
   return (
-    <Flex className="bubble-wrap" {...flexProps}>
-      <div className={classes} {...props}>
-        <Flex align="center" margin='none' padding='none' {...titleProps}>
-          <Text size="small" align="right" color="medium" >{author}: &nbsp;</Text>
-          <Text size="x-small" color="light">({time})</Text>
-        </Flex>
+    <Flex margin="small" className="bubble-wrap" {...flexProps}>
+      <Flex align="center" margin='none' padding='none' className="bubble__title" {...titleProps}>
+        <Text size="small" align="right" color="medium" >{author}: &nbsp;</Text>
+        <Text size="x-small" color="light">({time})</Text>
+      </Flex>
+      <Flex margin="none" className={classes} {...props}>
         <Text color="regular">{children}</Text>
-      </div>
+      </Flex>
     </Flex>
   )
 }
