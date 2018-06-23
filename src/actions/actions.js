@@ -14,12 +14,17 @@ export const onMessageRecieve = (message) => ({
   payload: { message }
 });
 
-export const changeNickname = (from, newNickname) => ({
+export const changeNickname = (id, nickname) => ({
   type: ActionTypes.changeNickname,
-  payload: { from, newNickname }
+  payload: { id, nickname }
 });
 
-export const addUser = (name) => ({
+export const addUser = (id, name) => ({
   type: ActionTypes.addUser,
+  payload: { id, name }
+});
+
+export const setCurrentUser = (name) => ({
+  type: ActionTypes.setCurrentUser,
   payload: { name }
 });

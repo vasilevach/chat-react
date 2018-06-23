@@ -2,16 +2,23 @@ import { ActionTypes } from '../types/types';
 
 const defaultState = [];
 
-function userReducer(state = defaultState, action) {
+function usersReducer(state = defaultState, action) {
   switch (action.type) {
     case ActionTypes.addUser: {
       const stateClone = [].concat(state);
-      stateClone.push(action.payload.name);
+      stateClone.push(action.payload);
       return stateClone;
     }
+      break;
+    case ActionTypes.changeNickname: {
+      const stateClone = [].concat(state);
+      stateClone[stateClone.findIndex((el) => el.id === action.payload.id)] = action.payload;
+      return stateClone;
+      }
+      break;
     default:
       return state;
   }
 }
 
-export default userReducer;
+export default usersReducer;

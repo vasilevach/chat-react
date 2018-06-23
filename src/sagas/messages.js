@@ -1,18 +1,25 @@
-import { call, takeLatest, put, cancel } from 'redux-saga/effects';
+import { takeLatest, select } from 'redux-saga/effects';
 import { ActionTypes } from '../types/types';
+import ws from '../ws';
 
 import { getMessageIfIsValidCommand, getMessageFromValidCommandWithMessage } from '../utils/utils';
 
-function* handleOnMessageSubmit({ payload }) {
+function* handleOnMessageSubmit({ payload }, socket) {
+  const store = yield select();
   const { message } = payload;
   const validCommandType = getMessageIfIsValidCommand(message);
+
 
   // first check if the message we try to send is a valid command:
   if (validCommandType) {
     switch(validCommandType) {
       case 'nick':
         const result = getMessageFromValidCommandWithMessage(message);
-        debugger;
+        socket.send(JSON.stringify({
+          type: 'nickname',
+          id: store.user,
+          nickname: result
+        }));
       default:
         break;
     }
@@ -20,6 +27,6 @@ function* handleOnMessageSubmit({ payload }) {
 
 }
 
-export default function* messages () {
-  yield takeLatest(ActionTypes.onMessageSubmit, handleOnMessageSubmit);
+export default function* messages (socket) {
+  yield takeLatest(ActionTypes.onMessageSubmit, (action) => handleOnMessageSubmit(action, socket));
 }

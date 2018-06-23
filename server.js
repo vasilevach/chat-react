@@ -5,14 +5,7 @@ const WebSocket = require('ws');
 const app = express();
 const server = http.createServer(app);
 
-function guid() {
-  function s4() {
-    return Math.floor((1 + Math.random()) * 0x10000)
-      .toString(16)
-      .substring(1);
-  }
-  return s4() + s4() + '-' + s4() + '-' + s4() + '-' + s4() + '-' + s4() + s4() + s4();
-}
+
 
 //initialize the WebSocket server instance
 const wss = new WebSocket.Server({ server });
