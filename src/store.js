@@ -1,18 +1,19 @@
-import { createStore, applyMiddleware, compose } from 'redux';
-import thunk from 'redux-thunk';
-import rootReducer from './reducers/index';
+import { combineReducers, createStore, applyMiddleware, compose } from 'redux';
+import createSagaMiddleware from 'redux-saga';
+import { reducers } from './reducers';
+import chatSaga from './sagas/chat';
 
+const initialState = {};
 
-const composeEnhancers =
-  typeof window === 'object' &&
-  window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ ?
-    window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__({
-    }) : compose;
+const composeEnhancers = window['__REDUX_DEVTOOLS_EXTENSION_COMPOSE__'] || compose;
+const sagaMiddleware = createSagaMiddleware();
 
-const middleware = [thunk];
-
-const enhancer = composeEnhancers(
-  applyMiddleware(...middleware)
+const store = createStore(
+  combineReducers(reducers),
+  initialState,
+  composeEnhancers(applyMiddleware(sagaMiddleware))
 );
 
-export const store = createStore(rootReducer, enhancer);
+sagaMiddleware.run(chatSaga);
+
+export default store;

@@ -2,6 +2,8 @@ import * as React from 'react';
 import { connect } from 'react-redux';
 import { Bubble, Flex, Field } from './components/ui';
 
+import * as Actions from './actions/actions';
+
 import './chat-app.scss';
 
 
@@ -30,11 +32,11 @@ class ChatApp extends React.Component {
           </Bubble>
         </Flex>
         <Flex className="editor-space" margin="0" padding="0" align="center" justify="center">
-          <Field fieldType="textarea" onChange={() => null}/>
+          <Field fieldType="textarea" onChange={(event) => this.props.onFieldChange(event.target.value)}/>
         </Flex>
       </Flex>
     )
   }
 }
 
-export default connect(null, null)(ChatApp)
+export default connect(null, Actions)(ChatApp)

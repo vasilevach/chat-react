@@ -1,12 +1,10 @@
-function messageReducer(state = {}, action) {
+import { ActionTypes } from '../types/types';
+
+function messagesReducer(state = {}, action) {
   switch (action.type) {
-    case 'SHOW_MESSAGE':
-      break;
-    case 'SEND_MESSAGE':
-      break;
-    case 'SEND_MESSAGE_IN_PROGRESS':
-      break;
-    case 'SHOW_MESSAGE_IN_PROGRESS':
-      break;
+    default:
+      return state;
   }
 }
+
+export default messagesReducer;
