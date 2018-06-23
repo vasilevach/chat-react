@@ -33,3 +33,8 @@ export const addMessage = (user, message, timestamp, format = null) => ({
   type: ActionTypes.addMessage,
   payload: { user, message, timestamp, format }
 });
+
+export const removeLastMessage = (user) => ({
+  type: ActionTypes.removeLastMessage,
+  payload: { user }
+});

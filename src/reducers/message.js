@@ -8,6 +8,12 @@ function messagesReducer(state = initialState, action) {
       stateClone.unshift(action.payload);
       return stateClone;
     }
+    case ActionTypes.removeLastMessage: {
+      const stateClone = [].concat(state);
+      const lastIndexOfOccurance = stateClone.map((item) => item.user === action.payload.user).indexOf(true);
+      stateClone.splice(lastIndexOfOccurance, 1);
+      return stateClone;
+    }
       break;
     default:
       return state;

@@ -1,5 +1,7 @@
 import { ActionTypes } from './types/types';
-import { onMessageRecieve, changeNickname, addUser, setCurrentUser, addMessage } from './actions/actions';
+import {
+  onMessageRecieve, changeNickname, addUser, setCurrentUser, addMessage, removeLastMessage
+} from './actions/actions';
 
 function guid() {
   function s4() {
@@ -40,6 +42,9 @@ const setupSocket = (dispatch) => {
       case 'think':
         const format = 'think';
         dispatch(addMessage(data.id, data.message, data.timestamp, format));
+        break;
+      case 'oops':
+        dispatch(removeLastMessage(data.id));
         break;
       case 'typing':
         break;

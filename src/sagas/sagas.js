@@ -31,6 +31,13 @@ function* handleOnMessageSubmit({ payload }, socket) {
         }));
       }
         break;
+      case 'oops': {
+        socket.send(JSON.stringify({
+          type: 'oops',
+          id: store.user
+        }));
+      }
+        break;
       default:
         break;
     }
