@@ -4,4 +4,17 @@
   min-height: 100vh;
   background: $body-background;
   font-color: $font-color-regular;
+  overflow: auto;
+  padding-bottom: 400px;
+}
+
+.conversation {
+  width: 100%;
+}
+
+.editor-space {
+  position: absolute;
+  bottom: 0;
+  height: 300px;
+  width: 100%;
 }

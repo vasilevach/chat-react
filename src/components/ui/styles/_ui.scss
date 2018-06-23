@@ -18,6 +18,8 @@ $line-height-large: $font-large + $line-height-modifier;
 $font-color-light: #ccc;
 $font-color-regular: #333;
 
+$white: #fff;
+$grey: #ddd;
 $primary: #add8e6;
 $secondary: #fffee1;
 
@@ -32,4 +34,5 @@ $spacing-medium: $spacing-default * 2;
 $spacing-large: $spacing-default * 4;
 
 // border radius:
+$radius-small: 5px;
 $radius-medium: 15px;

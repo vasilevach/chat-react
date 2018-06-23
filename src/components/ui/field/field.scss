@@ -1,0 +1,16 @@
+@import "../styles/_ui";
+
+.field {
+  display: block;
+  width: 100%;
+  max-width: 800px;
+  background-color: $white;
+  border: 1px solid $grey;
+  border-radius: $radius-small;
+  padding: $spacing-small;
+}
+
+.field__textarea {
+  height: auto;
+  min-height: 150px;
+}
