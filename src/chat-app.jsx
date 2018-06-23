@@ -1,8 +1,8 @@
 import * as React from 'react';
 import { connect } from 'react-redux';
-import { Bubble, Flex, Field } from './components/ui';
+import { Bubble, Flex, Field, Text } from './components/ui';
 
-import { getUserById, getDateByTimestamp, getUserStatusById } from './utils/utils';
+import { getUserById, getDateByTimestamp, getUserStatusById, getPropsByMessageFormat } from './utils/utils';
 
 import * as Actions from './actions/actions';
 
@@ -48,8 +48,9 @@ class ChatApp extends React.Component {
                 key={i}
                 author={getUserById(message.user, users)}
                 time={getDateByTimestamp(message.timestamp)}
-                state={getUserStatusById(message.user, user)}>
-                {message.message}
+                state={getUserStatusById(message.user, user)}
+              >
+                <Text {...getPropsByMessageFormat(message.format)}>{message.message}</Text>
               </Bubble>
             ))
           }

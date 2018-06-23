@@ -29,7 +29,7 @@ export const setCurrentUser = (name) => ({
   payload: { name }
 });
 
-export const addMessage = (user, message, timestamp) => ({
+export const addMessage = (user, message, timestamp, format = null) => ({
   type: ActionTypes.addMessage,
-  payload: { user, message, timestamp }
+  payload: { user, message, timestamp, format }
 });

@@ -20,13 +20,13 @@ function Text({ className, children, color, size, ...props }) {
 Text.propTypes = {
   children: PropTypes.oneOfType([PropTypes.string, PropTypes.number, PropTypes.node]),
   className: PropTypes.string,
-  color: PropTypes.oneOf(['light', 'regular']),
+  color: PropTypes.oneOf(['light', 'regular', 'dark-grey']),
   size: PropTypes.oneOf(['x-small','small', 'medium', 'large'])
 };
 
 Text.defaultProps = {
   size: 'medium',
-  color: 'light'
+  color: 'regular'
 };
 
 export default withTypography(Text, { weight: 'regular' });

@@ -5,3 +5,6 @@ export { default as Text } from './text';
 
 //HOC:
 export { default as withTypography } from './with-typography';
+
+//Utils
+export { default as cn } from '../utils';

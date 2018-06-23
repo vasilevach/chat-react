@@ -37,6 +37,10 @@ const setupSocket = (dispatch) => {
       case 'message':
         dispatch(addMessage(data.id, data.message, data.timestamp));
         break;
+      case 'think':
+        const format = 'think';
+        dispatch(addMessage(data.id, data.message, data.timestamp, format));
+        break;
       case 'typing':
         break;
       default:

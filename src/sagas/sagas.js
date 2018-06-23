@@ -11,13 +11,25 @@ function* handleOnMessageSubmit({ payload }, socket) {
   // first check if the message we try to send is a valid command:
   if (validCommandType) {
     switch(validCommandType) {
-      case 'nick':
+      // TODO: REFACTOR:
+      case 'nick': {
         const result = getMessageFromValidCommandWithMessage(message);
         socket.send(JSON.stringify({
           type: 'nickname',
           id: store.user,
           nickname: result
         }));
+      }
+        break;
+      case 'think': {
+        const result = getMessageFromValidCommandWithMessage(message);
+        socket.send(JSON.stringify({
+          type: 'think',
+          id: store.user,
+          timestamp: new Date(),
+          message: result
+        }));
+      }
         break;
       default:
         break;

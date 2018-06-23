@@ -24,3 +24,15 @@ export const getUserStatusById = (userId, user) => {
 
   return 'other';
 };
+
+export const getPropsByMessageFormat = (format) => {
+
+  if (format === 'think') {
+    return {
+      color: 'dark-grey',
+      style: 'italic'
+    }
+  }
+
+  return {};
+}

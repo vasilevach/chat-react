@@ -18,7 +18,7 @@ function Bubble({ author, className, children, time, state, ...props }) {
         <Text size="x-small" color="light">({time})</Text>
       </Flex>
       <Flex margin="none" className={classes} {...props}>
-        <Text color="regular">{children}</Text>
+        {children}
       </Flex>
     </Flex>
   )
