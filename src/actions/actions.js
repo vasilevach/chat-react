@@ -28,3 +28,8 @@ export const setCurrentUser = (name) => ({
   type: ActionTypes.setCurrentUser,
   payload: { name }
 });
+
+export const addMessage = (user, message, timestamp) => ({
+  type: ActionTypes.addMessage,
+  payload: { user, message, timestamp }
+});

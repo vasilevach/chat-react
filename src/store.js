@@ -1,7 +1,7 @@
 import { combineReducers, createStore, applyMiddleware, compose } from 'redux';
 import createSagaMiddleware from 'redux-saga';
 import { reducers } from './reducers';
-import chatSaga from './sagas/messages';
+import chatSaga from './sagas/sagas';
 import ws from './ws';
 
 const initialState = {};

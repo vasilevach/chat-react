@@ -1,6 +1,5 @@
 import { takeLatest, select } from 'redux-saga/effects';
 import { ActionTypes } from '../types/types';
-import ws from '../ws';
 
 import { getMessageIfIsValidCommand, getMessageFromValidCommandWithMessage } from '../utils/utils';
 
@@ -20,9 +19,18 @@ function* handleOnMessageSubmit({ payload }, socket) {
           id: store.user,
           nickname: result
         }));
+        break;
       default:
         break;
     }
+  } else {
+    // we send a regular message:
+    socket.send(JSON.stringify({
+      type: 'message',
+      id: store.user,
+      timestamp: new Date(),
+      message
+    }));
   }
 
 }
