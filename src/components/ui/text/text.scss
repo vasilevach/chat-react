@@ -2,6 +2,10 @@
 
 .text {
   &--size {
+    &-x-small {
+      font-size: $font-x-small;
+    }
+
     &-small {
       font-size: $font-small;
     }

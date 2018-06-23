@@ -1,3 +1,10 @@
 @import "../styles/_ui";
 
-.bubble {}
+.bubble-wrap {
+  // put intended :)
+  width: 100%;
+}
+
+.bubble {
+  max-width: 300px;
+}

@@ -9,7 +9,7 @@ function Text({ className, children, color, size, ...props }) {
   const classes = cn(
     'text',
     `text--size-${size}`,
-    `text--color-${size}`,
+    `text--color-${color}`,
     className);
 
   return (
@@ -21,7 +21,7 @@ Text.propTypes = {
   children: PropTypes.oneOfType([PropTypes.string, PropTypes.number, PropTypes.node]),
   className: PropTypes.string,
   color: PropTypes.oneOf(['light', 'regular']),
-  size: PropTypes.oneOf(['small', 'medium', 'large'])
+  size: PropTypes.oneOf(['x-small','small', 'medium', 'large'])
 };
 
 Text.defaultProps = {

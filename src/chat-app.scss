@@ -1,0 +1,7 @@
+@import "./components/ui/styles/ui";
+
+.chat-body {
+  min-height: 100vh;
+  background: $body-background;
+  font-color: $font-color-regular;
+}

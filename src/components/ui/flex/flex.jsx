@@ -38,8 +38,8 @@ Flex.propTypes = {
   className: PropTypes.string,
   direction: PropTypes.oneOf(['row', 'column', 'row-reverse', 'column-reverse']),
   justify: PropTypes.oneOf(['flex-start', 'center', 'flex-end', 'space-between', 'space-around']),
-  margin: PropTypes.oneOf(['small', 'medium', 'large', 'none']),
-  padding: PropTypes.oneOf(['small', 'medium', 'large', 'none'])
+  margin: PropTypes.oneOf(['none','small', 'medium', 'large', 'none']),
+  padding: PropTypes.oneOf(['none', 'small', 'medium', 'large', 'none'])
 };
 
 Flex.defaultProps = {
