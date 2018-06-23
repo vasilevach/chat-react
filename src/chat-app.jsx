@@ -6,9 +6,33 @@ import * as Actions from './actions/actions';
 
 import './chat-app.scss';
 
+const KEY = {
+  ENTER: 'Enter'
+};
 
 class ChatApp extends React.Component {
-  render(){
+  state = {
+    message: ''
+  };
+
+  handleMessageType = (event) => {
+    this.setState({
+      message: event.target.value
+    }, () => this.props.onMessageType());
+  }
+
+  handleKeyDown = (event) => {
+    const { message } = this.state;
+
+    if (event.key === KEY.ENTER) {
+      event.preventDefault();
+      if (message !== '') {
+        this.props.onMessageSubmit(message);
+      }
+    }
+  }
+
+  render() {
     return (
       <Flex className="chat-body" margin="none">
         <Flex className="conversation" direction="column-reverse">
@@ -32,7 +56,11 @@ class ChatApp extends React.Component {
           </Bubble>
         </Flex>
         <Flex className="editor-space" margin="0" padding="0" align="center" justify="center">
-          <Field fieldType="textarea" onChange={(event) => this.props.onFieldChange(event.target.value)}/>
+          <Field
+            fieldType="textarea"
+            onChange={this.handleMessageType}
+            onKeyDown={this.handleKeyDown}
+          />
         </Flex>
       </Flex>
     )

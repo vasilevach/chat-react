@@ -1,3 +1,4 @@
 export const ActionTypes = {
-  onFieldChange: 'chat_app/ON_FIELD_CHANGE'
+  onMessageType: 'chat_app/ON_MESSAGE_TYPE',
+  onMessageSubmit: 'chat_app/ON_MESSAGE_SUBMIT',
 };
