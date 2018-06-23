@@ -3,11 +3,13 @@ import PropTypes from 'prop-types';
 
 import './bubble.scss';
 import cn from '../../utils';
+import Text from '../text';
 
 function Bubble({ author, className, children, time, ...props }) {
   const classes = cn('bubble', className);
   return (
     <div className={classes} {...props}>
+      <Text>{author}</Text>
       {children}
     </div>
   )
