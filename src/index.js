@@ -4,6 +4,8 @@ import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
 import { store } from './store';
 
+import './components/ui/styles/main.scss';
+
 import ChatApp from './chat-app';
 
 ReactDOM.render(
