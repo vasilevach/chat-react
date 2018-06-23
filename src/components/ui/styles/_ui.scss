@@ -7,3 +7,10 @@ $font-large: 24px;
 // colors:
 $font-color-light: #ccc;
 $font-color-regular: #333;
+
+// spacings:
+$spacing-default: 5px;
+
+$spacing-small: $spacing-default * 1;
+$spacing-medium: $spacing-default * 2;
+$spacing-large: $spacing-default * 4;
