@@ -2,6 +2,7 @@ import { combineReducers, createStore, applyMiddleware, compose } from 'redux';
 import createSagaMiddleware from 'redux-saga';
 import { reducers } from './reducers';
 import chatSaga from './sagas/messages';
+import ws from './ws';
 
 const initialState = {};
 
@@ -14,6 +15,8 @@ const store = createStore(
   composeEnhancers(applyMiddleware(sagaMiddleware))
 );
 
-sagaMiddleware.run(chatSaga);
+const socket = ws(store.dispatch);
+
+sagaMiddleware.run(chatSaga, socket);
 
 export default store;
