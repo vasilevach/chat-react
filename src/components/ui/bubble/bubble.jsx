@@ -9,8 +9,9 @@ function Bubble({ author, className, children, time, ...props }) {
   const classes = cn('bubble', className);
   return (
     <div className={classes} {...props}>
-      <Text>{author}</Text>
-      {children}
+      <Text size="small" align="right" color="light" >{author}</Text>
+      <Text size="small" align="right" color="light">{time}</Text>
+      <Text color="regular">{children}</Text>
     </div>
   )
 }

@@ -1,0 +1,26 @@
+@import "../styles/_ui";
+
+.text {
+  &--size {
+    &-small {
+      font-size: $font-small;
+    }
+
+    &-medium {
+      font-size: $font-medium;
+    }
+
+    &-large {
+      font-size: $font-large;
+    }
+  }
+
+  &--color {
+    &-light {
+      color: $font-color-light;
+    }
+    &-regular {
+      color: $font-color-regular;
+    }
+  }
+}

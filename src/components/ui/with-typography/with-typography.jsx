@@ -25,10 +25,9 @@ function withTypography(Component, defaults = {}) {
 
   WithTypography.propTypes = Object.assign(Component.propTypes, {
     align: PropTypes.oneOf(['left', 'center', 'right']),
-  className: PropTypes.string,
+    className: PropTypes.string,
     transform: PropTypes.oneOf(['capitalize', 'lowercase', 'uppercase']),
-  weight: PropTypes.oneOf(['light', 'regular', 'medium', 'bold', 'extra-bold']),
-  truncate: PropTypes.bool
+    weight: PropTypes.oneOf(['light', 'regular', 'medium', 'bold', 'extra-bold'])
 });
 
   return WithTypography;

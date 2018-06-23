@@ -1,0 +1,51 @@
+@import "../styles/_ui";
+
+.typography {
+  &--align {
+    &-left {
+      text-align: left;
+    }
+    &-center {
+      text-align: center;
+    }
+    &-right {
+      text-align: right;
+    }
+  }
+
+  &--transform {
+    &-capitalize {
+      text-transform: capitalize;
+    }
+
+    &-lowercase {
+      text-transform: lowercase;
+    }
+
+    &-uppercase {
+      text-transform: uppercase;
+    }
+  }
+
+  &--weight {
+    &-light {
+      font-weight: 100;
+    }
+
+    &-regular {
+      font-weight: 300;
+    }
+
+    &-medium {
+      font-weight: 400;
+    }
+
+    &-bold {
+      font-weight: 500;
+    }
+
+    &-extra-bold {
+      font-weight: 700;
+    }
+  }
+}
