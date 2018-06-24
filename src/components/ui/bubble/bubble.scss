@@ -29,6 +29,10 @@
       background-color: darken($secondary, 10%);
     }
   }
+
+  &--fadelast {
+    opacity: 0.1;
+  }
 }
 
 .bubble__title {

@@ -32,6 +32,12 @@ function* handleOnMessageSubmit({ payload }, socket) {
         }));
       }
         break;
+      case 'fadelast':
+        socket.send(JSON.stringify({
+          type: 'fadelast',
+          id: store.user
+        }));
+        break;
       case 'oops': {
         socket.send(JSON.stringify({
           type: 'oops',

@@ -1,6 +1,6 @@
 import {
   changeNickname, addUser, setCurrentUser, addMessage, removeLastMessage,
-  addTypingNotification, removeTypingNotification
+  addTypingNotification, removeTypingNotification, fadeLastMessage
 } from './actions/actions';
 import { getUserObjectById } from './utils/utils';
 
@@ -62,7 +62,7 @@ const setupSocket = (dispatch, store) => {
         dispatch(addMessage(data.id, data.message, data.timestamp, 'highlight'));
         break;
       case 'fadelast':
-        // dispatch(addMessage(data.id, data.message, data.timestamp, format));
+        dispatch(fadeLastMessage(data.id));
         break;
       case 'oops':
         dispatch(removeLastMessage(data.id));

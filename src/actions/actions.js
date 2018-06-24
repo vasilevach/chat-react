@@ -39,12 +39,17 @@ export const removeLastMessage = (user) => ({
   payload: { user }
 });
 
+export const fadeLastMessage = (user) => ({
+  type: ActionTypes.fadeLastMessage,
+  payload: { user }
+});
+
 export const addTypingNotification = (id, userId) => ({
   type: ActionTypes.addTypingNotification,
   payload: { id, userId }
-})
+});
 
 export const removeTypingNotification = () => ({
   // I will just remove the whole notification, because we have 2 ppl. If they were more, I would remove it by id
   type: ActionTypes.removeTypingNotification
-})
+});
