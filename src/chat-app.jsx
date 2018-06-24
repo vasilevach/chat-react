@@ -57,13 +57,15 @@ class ChatApp extends React.Component {
           }
         </Flex>
         <Flex className="editor-space" margin="none" padding="none" align="center" justify="center">
-          <TypingNotification />
-          <Field
-            fieldType="textarea"
-            value={message}
-            onChange={this.handleMessageType}
-            onKeyDown={this.handleKeyDown}
-          />
+          <div className="editor-textarea-wrapper">
+            <TypingNotification />
+            <Field
+              fieldType="textarea"
+              value={message}
+              onChange={this.handleMessageType}
+              onKeyDown={this.handleKeyDown}
+            />
+          </div>
         </Flex>
       </Flex>
     )

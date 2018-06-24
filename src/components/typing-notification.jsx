@@ -17,7 +17,7 @@ class TypingNotification extends React.Component {
   }
 
   componentDidUpdate(prevProps) {
-    const { notifications, user } = this.props;
+    const { notifications } = this.props;
 
     if (!Object.keys(notifications).length || !Object.keys(prevProps.notifications).length) {
       return;
