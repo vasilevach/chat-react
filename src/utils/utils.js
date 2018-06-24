@@ -36,6 +36,12 @@ export const getPropsByMessageFormat = (format) => {
     }
   }
 
+  if (format === 'highlight') {
+    return {
+      size: 'large'
+    }
+  }
+
   return {};
 };
 

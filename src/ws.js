@@ -35,6 +35,7 @@ const setupSocket = (dispatch, store) => {
     switch (data.type) {
       case 'newUser':
         dispatch(addUser(data.id, data.name));
+        // TODO: REFACTOR: THIS GOES TO SAGA:
         if (data.id !== currentStore.user) {
           socket.send(JSON.stringify({
             type: 'userHandshakeResponse',
@@ -55,8 +56,13 @@ const setupSocket = (dispatch, store) => {
         dispatch(removeTypingNotification());
         break;
       case 'think':
-        const format = 'think';
-        dispatch(addMessage(data.id, data.message, data.timestamp, format));
+        dispatch(addMessage(data.id, data.message, data.timestamp, 'think'));
+        break;
+      case 'highlight':
+        dispatch(addMessage(data.id, data.message, data.timestamp, 'highlight'));
+        break;
+      case 'fadelast':
+        // dispatch(addMessage(data.id, data.message, data.timestamp, format));
         break;
       case 'oops':
         dispatch(removeLastMessage(data.id));

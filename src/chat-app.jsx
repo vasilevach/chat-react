@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { connect } from 'react-redux';
-import { Bubble, Flex, Field, Text } from './components/ui';
+import { Bubble, Flex, Field, Text, cn } from './components/ui';
 import { TypingNotification } from './components';
 
 import { getUserNameById, getDateByTimestamp, getUserStatusById, getPropsByMessageFormat } from './utils/utils';
@@ -50,6 +50,7 @@ class ChatApp extends React.Component {
                 author={getUserNameById(message.user, users)}
                 time={getDateByTimestamp(message.timestamp)}
                 state={getUserStatusById(message.user, user)}
+                className={cn(message.format && `bubble--${message.format}`)}
               >
                 <Text {...getPropsByMessageFormat(message.format)}>{message.message}</Text>
               </Bubble>

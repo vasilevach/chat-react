@@ -19,6 +19,16 @@
   &--other {
     background-color: $secondary;
   }
+
+  &--highlight {
+    &.bubble--self {
+      background-color: darken($primary, 10%);
+    }
+
+    &.bubble--other {
+      background-color: darken($secondary, 10%);
+    }
+  }
 }
 
 .bubble__title {

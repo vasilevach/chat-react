@@ -21,10 +21,11 @@ function* handleOnMessageSubmit({ payload }, socket) {
         }));
       }
         break;
-      case 'think': {
+      case 'think':
+      case 'highlight': {
         const result = getMessageFromValidCommandWithMessage(message);
         socket.send(JSON.stringify({
-          type: 'think',
+          type: validCommandType,
           id: store.user,
           timestamp: new Date(),
           message: result
