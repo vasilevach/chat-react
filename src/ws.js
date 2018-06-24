@@ -1,7 +1,6 @@
-import { ActionTypes } from './types/types';
 import {
-  onMessageRecieve, changeNickname, addUser, setCurrentUser, addMessage, removeLastMessage,
-  addTypingNotification
+  changeNickname, addUser, setCurrentUser, addMessage, removeLastMessage,
+  addTypingNotification, removeTypingNotification
 } from './actions/actions';
 import { getUserObjectById } from './utils/utils';
 
@@ -53,6 +52,7 @@ const setupSocket = (dispatch, store) => {
         break;
       case 'message':
         dispatch(addMessage(data.id, data.message, data.timestamp));
+        dispatch(removeTypingNotification());
         break;
       case 'think':
         const format = 'think';
