@@ -1,8 +1,9 @@
 import * as React from 'react';
 import { connect } from 'react-redux';
 import { Bubble, Flex, Field, Text } from './components/ui';
+import { TypingNotification } from './components';
 
-import { getUserById, getDateByTimestamp, getUserStatusById, getPropsByMessageFormat } from './utils/utils';
+import { getUserNameById, getDateByTimestamp, getUserStatusById, getPropsByMessageFormat } from './utils/utils';
 
 import * as Actions from './actions/actions';
 
@@ -46,7 +47,7 @@ class ChatApp extends React.Component {
             messages.map((message, i) => (
               <Bubble
                 key={i}
-                author={getUserById(message.user, users)}
+                author={getUserNameById(message.user, users)}
                 time={getDateByTimestamp(message.timestamp)}
                 state={getUserStatusById(message.user, user)}
               >
@@ -56,6 +57,7 @@ class ChatApp extends React.Component {
           }
         </Flex>
         <Flex className="editor-space" margin="none" padding="none" align="center" justify="center">
+          <TypingNotification />
           <Field
             fieldType="textarea"
             value={message}

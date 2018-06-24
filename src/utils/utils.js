@@ -10,15 +10,17 @@ export const getMessageIfIsValidCommand = (message) => {
 
 export const getMessageFromValidCommandWithMessage = (command) => command.substring(command.indexOf(' ') + 1)
 
-export const getUserById = (userId, usersList) => usersList.find((u) => u.id === userId).name;
+export const getUserNameById = (userId, usersList) => usersList.find((u) => u.id === userId).name;
 
 export const getDateByTimestamp = (timestamp) => {
   const date = new Date(timestamp);
   return `${date.getHours()}:${date.getMinutes()}`;
 };
 
+export const isTheUserPrimeryUser = (userId, user) => userId === user;
+
 export const getUserStatusById = (userId, user) => {
-  if (userId === user) {
+  if (isTheUserPrimeryUser(userId, user)) {
     return 'self';
   }
 

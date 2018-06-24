@@ -50,9 +50,18 @@ function* handleOnMessageSubmit({ payload }, socket) {
       message
     }));
   }
+}
 
+function* handleOnMessageType(socket) {
+  const store = yield select();
+
+  socket.send(JSON.stringify({
+    type: 'typing',
+    userId: store.user
+  }));
 }
 
 export default function* messages (socket) {
   yield takeLatest(ActionTypes.onMessageSubmit, (action) => handleOnMessageSubmit(action, socket));
+  yield takeLatest(ActionTypes.onMessageType, () => handleOnMessageType(socket));
 }

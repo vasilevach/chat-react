@@ -8,4 +8,6 @@ export const ActionTypes = {
 
   addMessage: 'chat_app/ADD_MESSAGE',
   removeLastMessage: 'chat_app/REMOVE_LAST_MESSAGE',
+  addTypingNotification: 'chat_app/ADD_TYPING_NOTIFICATION',
+  removeTypingNotification: 'chat_app/REMOVE_TYPING_NOTIFICATION'
 };
