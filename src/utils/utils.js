@@ -35,4 +35,6 @@ export const getPropsByMessageFormat = (format) => {
   }
 
   return {};
-}
+};
+
+export const getUserObjectById = (id, users) => users.find((u) => u.id === id);

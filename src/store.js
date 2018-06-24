@@ -15,7 +15,7 @@ const store = createStore(
   composeEnhancers(applyMiddleware(sagaMiddleware))
 );
 
-const socket = ws(store.dispatch);
+const socket = ws(store.dispatch, store);
 
 sagaMiddleware.run(chatSaga, socket);
 
