@@ -1,7 +1,12 @@
-import { takeLatest, select } from 'redux-saga/effects';
+import { takeLatest, select, call, put } from 'redux-saga/effects';
 import { ActionTypes } from '../types/types';
+import { delay } from 'redux-saga';
+import { initCounter, removeCounter } from '../actions/actions';
 
-import { getMessageIfIsValidCommand, getMessageFromValidCommandWithMessage } from '../utils/utils';
+import {
+  getCountdownCommand, getMessageIfIsValidCommand, getMessageFromValidCommandWithMessage,
+  openDataLink
+} from '../utils/utils';
 
 function* handleOnMessageSubmit({ payload }, socket) {
   const store = yield select();
@@ -30,6 +35,19 @@ function* handleOnMessageSubmit({ payload }, socket) {
           timestamp: new Date(),
           message: result
         }));
+      }
+      case 'countdown' : {
+        const result = getCountdownCommand(message);
+        if (result) {
+          socket.send(JSON.stringify({
+            type: 'countdown',
+            id: store.user,
+            message: result
+          }));
+        } else {
+          // error handling :)))
+          alert('Format must be ex: /countdown 5 http://www.google.com')
+        }
       }
         break;
       case 'fadelast':
@@ -68,7 +86,20 @@ function* handleOnMessageType(socket) {
   }));
 }
 
+function* handleCountdown ({payload}) {
+  const store = yield select();
+
+  if (store.user === payload.id) {
+    // than this is not me...continue with countdown
+    yield(put(initCounter(payload.message.time)));
+    yield call(delay, payload.message.time * 1000);
+    openDataLink(payload.message.url);
+    yield(put(removeCounter(payload.message.time)));
+  }
+}
+
 export default function* messages (socket) {
   yield takeLatest(ActionTypes.onMessageSubmit, (action) => handleOnMessageSubmit(action, socket));
   yield takeLatest(ActionTypes.onMessageType, () => handleOnMessageType(socket));
+  yield takeLatest(ActionTypes.countdownToNewWebsite, handleCountdown);
 }

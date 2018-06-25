@@ -1,6 +1,7 @@
 import {
   changeNickname, addUser, setCurrentUser, addMessage, removeLastMessage,
-  addTypingNotification, removeTypingNotification, fadeLastMessage
+  addTypingNotification, removeTypingNotification, fadeLastMessage,
+  countdownToNewWebsite
 } from './actions/actions';
 import { getUserObjectById } from './utils/utils';
 
@@ -70,6 +71,8 @@ const setupSocket = (dispatch, store) => {
       case 'typing':
         dispatch(addTypingNotification(+new Date, data.userId));
         break;
+      case 'countdown':
+        dispatch(countdownToNewWebsite(data.id, data.message));
       default:
         break
     }

@@ -53,3 +53,17 @@ export const removeTypingNotification = () => ({
   // I will just remove the whole notification, because we have 2 ppl. If they were more, I would remove it by id
   type: ActionTypes.removeTypingNotification
 });
+
+export const countdownToNewWebsite = (id, message) => ({
+  type: ActionTypes.countdownToNewWebsite,
+  payload: { id, message }
+});
+
+export const initCounter = (time) => ({
+  type: ActionTypes.initCounter,
+  payload: { time }
+});
+
+export const countdownToNewWebsite = () => ({
+  type: ActionTypes.removeCounter
+});
