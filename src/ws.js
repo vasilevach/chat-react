@@ -15,7 +15,7 @@ function guid() {
 }
 
 const setupSocket = (dispatch, store) => {
-  const socket = new WebSocket('ws://localhost:8999');
+  const socket = new WebSocket('ws://'+location.hostname+':8999');
   const random5digitNumber = Math.floor(Math.random()*90000) + 10000;
 
   socket.onopen = () => {
