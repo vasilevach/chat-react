@@ -6,7 +6,6 @@ export const pushMessageToSocket = (socket, payload) => (
 
 export const changeNickName = (socket, message, user) => {
   const result = getMessageFromValidCommandWithMessage(message);
-  debugger;
   pushMessageToSocket(socket, {
     type: 'nickname',
     id: user,
