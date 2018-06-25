@@ -5,6 +5,7 @@ export const ActionTypes = {
   changeNickname: 'chat_app/CHANGE_NICKNAME',
   addUser: 'chat_app/ADD_USER',
   setCurrentUser: 'chat_app/SET_CURRENT_USER',
+  handshakeNewUser: 'chat_app/HANDSHAKE_NEW_USER',
 
   addMessage: 'chat_app/ADD_MESSAGE',
   removeLastMessage: 'chat_app/REMOVE_LAST_MESSAGE',

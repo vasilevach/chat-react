@@ -60,3 +60,17 @@ export const sendMessage = (socket, message, user) => (
     message
   })
 );
+
+export const sendUserTypingEvent = (socket, user) => (
+  pushMessageToSocket(socket, {
+    type: 'typing',
+    userId: user
+  })
+);
+
+export const handshakeNewUser = (socket, userData) => (
+  pushMessageToSocket(socket, {
+    type: 'userHandshakeResponse',
+    ...userData
+  })
+);

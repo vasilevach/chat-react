@@ -67,3 +67,8 @@ export const initCounter = (time) => ({
 export const removeCounter = () => ({
   type: ActionTypes.removeCounterNotification
 });
+
+export const handshakeNewUser = (userData) => ({
+  type: ActionTypes.handshakeNewUser,
+  payload: { userData }
+})

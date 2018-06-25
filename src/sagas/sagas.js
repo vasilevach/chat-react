@@ -38,14 +38,10 @@ function* handleOnMessageSubmit({ payload }, socket) {
 
 function* handleOnMessageType(socket) {
   const store = yield select();
-
-  socket.send(JSON.stringify({
-    type: 'typing',
-    userId: store.user
-  }));
+  API.sendUserTypingEvent(socket, store.user);
 }
 
-function* handleCountdown ({payload}) {
+function* handleCountdown ({ payload }) {
   const store = yield select();
 
   if (store.user !== payload.id) {
@@ -57,8 +53,13 @@ function* handleCountdown ({payload}) {
   }
 }
 
+function* handleNewUser({ payload }, socket) {
+  API.handshakeNewUser(socket, payload.userData);
+}
+
 export default function* messages (socket) {
   yield takeLatest(ActionTypes.onMessageSubmit, (action) => handleOnMessageSubmit(action, socket));
   yield takeLatest(ActionTypes.onMessageType, () => handleOnMessageType(socket));
   yield takeLatest(ActionTypes.countdownToNewWebsite, handleCountdown);
+  yield takeLatest(ActionTypes.handshakeNewUser, (action) => handleNewUser(action, socket));
 }

@@ -1,7 +1,7 @@
 import {
   changeNickname, addUser, setCurrentUser, addMessage, removeLastMessage,
   addTypingNotification, removeTypingNotification, fadeLastMessage,
-  countdownToNewWebsite
+  countdownToNewWebsite, handshakeNewUser
 } from './actions/actions';
 import { getUserObjectById } from './utils/utils';
 
@@ -36,12 +36,8 @@ const setupSocket = (dispatch, store) => {
     switch (data.type) {
       case 'newUser':
         dispatch(addUser(data.id, data.name));
-        // TODO: REFACTOR: THIS GOES TO SAGA:
         if (data.id !== currentStore.user) {
-          socket.send(JSON.stringify({
-            type: 'userHandshakeResponse',
-            ...getUserObjectById(currentStore.user, currentStore.users)
-          }));
+          dispatch(handshakeNewUser(getUserObjectById(currentStore.user, currentStore.users)));
         }
         break;
       case 'userHandshakeResponse':
