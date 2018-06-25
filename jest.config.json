@@ -1,0 +1,10 @@
+{
+  "testRegex": "(/__tests__/.*|\\.(test|spec))\\.(ts|tsx|js)$",
+  "transform": {
+    "^.+\\.jsx?$" : "babel-jest"
+  },
+  "moduleFileExtensions": ["js", "json"],
+  "moduleNameMapper": {
+    "src(.*)$": "<rootDir>/src/$1"
+  }
+}
