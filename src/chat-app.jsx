@@ -1,4 +1,5 @@
 import * as React from 'react';
+import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { Bubble, Flex, Field, Text, cn } from './components/ui';
 import { Counter, TypingNotification } from './components';
@@ -87,5 +88,12 @@ const mapStateToProps = (state) => ({
   user: state.user,
   countNotification: state.notifications.counter
 });
+
+ChatApp.propTypes = {
+  messages: PropTypes.array,
+  user: PropTypes.string,
+  users: PropTypes.array,
+  countNotification: PropTypes.any
+};
 
 export default connect(mapStateToProps, Actions)(ChatApp)
