@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { connect } from 'react-redux';
 import { Bubble, Flex, Field, Text, cn } from './components/ui';
-import { TypingNotification } from './components';
+import { Counter, TypingNotification } from './components';
 
 import {
   getUserNameById, getDateByTimestamp, getUserStatusById, getPropsByMessageFormat, formatEmojiMessage
@@ -40,39 +40,42 @@ class ChatApp extends React.Component {
   }
 
   render() {
-    const { messages, users, user } = this.props;
+    const { countNotification, messages, users, user } = this.props;
     const { message } = this.state;
     return (
-      <Flex className="chat-body" margin="none">
-        <Flex className="conversation" direction="column-reverse">
-          {
-            messages.map((message, i) => (
-              <Bubble
-                key={i}
-                author={getUserNameById(message.user, users)}
-                time={getDateByTimestamp(message.timestamp)}
-                state={getUserStatusById(message.user, user)}
-                className={cn(message.format && `bubble--${message.format}`)}
-              >
-                <Text {...getPropsByMessageFormat(message.format)}>
-                  {formatEmojiMessage(message.message)}
-                </Text>
-              </Bubble>
-            ))
-          }
+      <React.Fragment>
+        {countNotification && <Counter />}
+        <Flex className="chat-body" margin="none">
+          <Flex className="conversation" direction="column-reverse">
+            {
+              messages.map((message, i) => (
+                <Bubble
+                  key={i}
+                  author={getUserNameById(message.user, users)}
+                  time={getDateByTimestamp(message.timestamp)}
+                  state={getUserStatusById(message.user, user)}
+                  className={cn(message.format && `bubble--${message.format}`)}
+                >
+                  <Text {...getPropsByMessageFormat(message.format)}>
+                    {formatEmojiMessage(message.message)}
+                  </Text>
+                </Bubble>
+              ))
+            }
+          </Flex>
+          <Flex className="editor-space" margin="none" padding="none" align="center" justify="center">
+            <div className="editor-textarea-wrapper">
+              <TypingNotification />
+              <Field
+                fieldType="textarea"
+                value={message}
+                onChange={this.handleMessageType}
+                onKeyDown={this.handleKeyDown}
+              />
+            </div>
+          </Flex>
         </Flex>
-        <Flex className="editor-space" margin="none" padding="none" align="center" justify="center">
-          <div className="editor-textarea-wrapper">
-            <TypingNotification />
-            <Field
-              fieldType="textarea"
-              value={message}
-              onChange={this.handleMessageType}
-              onKeyDown={this.handleKeyDown}
-            />
-          </div>
-        </Flex>
-      </Flex>
+      </React.Fragment>
     )
   }
 }
@@ -80,7 +83,8 @@ class ChatApp extends React.Component {
 const mapStateToProps = (state) => ({
   messages: state.messages,
   users: state.users,
-  user: state.user
+  user: state.user,
+  countNotification: state.notifications.counter
 });
 
 export default connect(mapStateToProps, Actions)(ChatApp)

@@ -9,10 +9,10 @@ export const ActionTypes = {
   addMessage: 'chat_app/ADD_MESSAGE',
   removeLastMessage: 'chat_app/REMOVE_LAST_MESSAGE',
   fadeLastMessage: 'chat_app/FADE_LAST_MESSAGE',
+
   addTypingNotification: 'chat_app/ADD_TYPING_NOTIFICATION',
   removeTypingNotification: 'chat_app/REMOVE_TYPING_NOTIFICATION',
-
   countdownToNewWebsite: 'chat_app/COUNTDOWN_TO_NEW_WEBSITE',
-  initCounter: 'chat_app/INIT_COUNTER',
-  removeCounter: 'chat_app/REMOVE_COUNTER',
+  initCounterNotification: 'chat_app/INIT_COUNTER',
+  removeCounterNotification: 'chat_app/REMOVE_COUNTER'
 };

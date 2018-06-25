@@ -60,10 +60,10 @@ export const countdownToNewWebsite = (id, message) => ({
 });
 
 export const initCounter = (time) => ({
-  type: ActionTypes.initCounter,
+  type: ActionTypes.initCounterNotification,
   payload: { time }
 });
 
-export const countdownToNewWebsite = () => ({
-  type: ActionTypes.removeCounter
+export const removeCounter = () => ({
+  type: ActionTypes.removeCounterNotification
 });

@@ -9,7 +9,15 @@ function notificationsReducer(state = initialState, action) {
         typing: action.payload
       };
       break;
+    case ActionTypes.initCounterNotification:
+      return {
+        ...state,
+        counter: action.payload
+      };
+      break;
     case ActionTypes.removeTypingNotification:
+      return initialState;
+    case ActionTypes.removeCounterNotification:
       return initialState;
     default:
       return state;

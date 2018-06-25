@@ -1,4 +1,5 @@
 export { default as Bubble } from './bubble';
+export { default as Counter } from '../counter';
 export { default as Field } from './field';
 export { default as Flex } from './flex';
 export { default as Text } from './text';
