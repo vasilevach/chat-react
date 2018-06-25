@@ -5,18 +5,14 @@ const WebSocket = require('ws');
 const app = express();
 const server = http.createServer(app);
 
-
+app.use(express.static('dist'));
 
 //initialize the WebSocket server instance
 const wss = new WebSocket.Server({ server });
 
 wss.on('connection', (ws) => {
 
-  //connection is up, let's add a simple simple event
   ws.on('message', (message) => {
-
-    //log the received message and send it back to the client
-    console.log('received: %s', message);
     wss.broadcast(message);
   });
 });
