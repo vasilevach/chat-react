@@ -3,8 +3,9 @@ import PropTypes from 'prop-types';
 
 import { connect } from 'react-redux';
 import * as Actions from '../../actions/actions';
+import { Flex } from '../ui';
 
-import cn from '../utils';
+import './counter.scss';
 
 class Counter extends React.Component {
   interval = null;
@@ -22,19 +23,20 @@ class Counter extends React.Component {
   render() {
 
     return (
-      <h1>{this.state.countDown}</h1>
+      <Flex justify="center" align="center" className="counter">
+        <h1>{this.state.countDown}</h1>
+      </Flex>
     )
   }
 
   componentWillUnmount() {
-    this.removeCounter();
+    clearInterval(this.interval);
+    this.props.removeCounter();
   }
 }
 
 Counter.propTypes = {
-};
-
-Counter.defaultProps = {
+  removeCounter: PropTypes.func
 };
 
 const mapStateToProps = (state) => ({

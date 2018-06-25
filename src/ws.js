@@ -73,6 +73,7 @@ const setupSocket = (dispatch, store) => {
         break;
       case 'countdown':
         dispatch(countdownToNewWebsite(data.id, data.message));
+        dispatch(removeTypingNotification());
       default:
         break
     }

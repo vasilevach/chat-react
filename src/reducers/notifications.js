@@ -1,5 +1,8 @@
 import { ActionTypes } from '../types/types';
-const initialState = {};
+const initialState = {
+  typing: {},
+  counter: {}
+};
 
 function notificationsReducer(state = initialState, action) {
   switch (action.type) {
@@ -16,9 +19,15 @@ function notificationsReducer(state = initialState, action) {
       };
       break;
     case ActionTypes.removeTypingNotification:
-      return initialState;
+      return {
+        ...state,
+        typing: {}
+      };
     case ActionTypes.removeCounterNotification:
-      return initialState;
+      return {
+        ...state,
+        counter: {}
+      };
     default:
       return state;
   }

@@ -89,12 +89,12 @@ function* handleOnMessageType(socket) {
 function* handleCountdown ({payload}) {
   const store = yield select();
 
-  if (store.user === payload.id) {
+  if (store.user !== payload.id) {
     // than this is not me...continue with countdown
-    yield(put(initCounter(payload.message.time)));
+    yield(put(initCounter(Number(payload.message.time))));
     yield call(delay, payload.message.time * 1000);
     openDataLink(payload.message.url);
-    yield(put(removeCounter(payload.message.time)));
+    yield(put(removeCounter()));
   }
 }
 

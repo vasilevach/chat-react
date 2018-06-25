@@ -12,18 +12,18 @@ class TypingNotification extends React.Component {
   timeout = null;
 
   shouldAddNotification = () => {
-    const { notifications, user } = this.props;
-    return Object.keys(notifications).length && !isTheUserPrimeryUser(notifications.typing.userId, user);
+    const { typing, user } = this.props;
+    return Object.keys(typing).length && !isTheUserPrimeryUser(typing.userId, user);
   }
 
   componentDidUpdate(prevProps) {
-    const { notifications } = this.props;
+    const { typing } = this.props;
 
-    if (!Object.keys(notifications).length || !Object.keys(prevProps.notifications).length) {
+    if (!Object.keys(typing).length || !Object.keys(prevProps.typing).length) {
       return;
     }
 
-    if (prevProps.notifications.typing.id !== notifications.typing.id) {
+    if (typing.id !== prevProps.typing.id) {
       // this will remove the notification 1 second after the user has stopped typing.
       clearTimeout(this.timeout);
       this.timeout = setTimeout(() => {
@@ -33,11 +33,11 @@ class TypingNotification extends React.Component {
   }
 
   render() {
-    const { notifications, users } = this.props;
+    const { typing, users } = this.props;
 
     if (this.shouldAddNotification()) {
       return (
-        <Text size="x-small" color="light">{getUserNameById(notifications.typing.userId, users)} is typing...</Text>
+        <Text size="x-small" color="light">{getUserNameById(typing.userId, users)} is typing...</Text>
       )
     }
 
@@ -46,7 +46,7 @@ class TypingNotification extends React.Component {
 }
 
 const mapStateToProps = (state) => ({
-  notifications: state.notifications,
+  typing: state.notifications.typing,
   user: state.user,
   users: state.users
 });
@@ -54,7 +54,7 @@ const mapStateToProps = (state) => ({
 export default connect(mapStateToProps, Actions)(TypingNotification);
 
 TypingNotification.propTypes = {
-  notification: PropTypes.any,
+  typing: PropTypes.any,
   user: PropTypes.string,
   users: PropTypes.array,
   removeTypingNotification: PropTypes.func

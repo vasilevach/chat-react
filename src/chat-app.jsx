@@ -42,9 +42,10 @@ class ChatApp extends React.Component {
   render() {
     const { countNotification, messages, users, user } = this.props;
     const { message } = this.state;
+    const addCountNotification = Boolean(Object.keys(countNotification).length);
     return (
       <React.Fragment>
-        {countNotification && <Counter />}
+        {addCountNotification && <Counter />}
         <Flex className="chat-body" margin="none">
           <Flex className="conversation" direction="column-reverse">
             {
