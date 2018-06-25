@@ -46,3 +46,13 @@ export const getPropsByMessageFormat = (format) => {
 };
 
 export const getUserObjectById = (id, users) => users.find((u) => u.id === id);
+
+export const formatEmojiMessage = (message) => {
+  const emojiObject = {
+    ':)': "😊",
+    '(smile)': "😊",
+    ';)': "😉",
+    '(wink)': "😉"
+  };
+  return message.replace(/:\)|\(smile\)|;\)|\(wink\)/gi, (matched) => emojiObject[matched]);
+};
