@@ -16,3 +16,12 @@ export const ActionTypes = {
   initCounterNotification: 'chat_app/INIT_COUNTER',
   removeCounterNotification: 'chat_app/REMOVE_COUNTER'
 };
+
+export const CommandTypes = {
+  NICK: 'nick',
+  THINK: 'think',
+  HIGHTLIGHT: 'highlight',
+  COUNTDOWN: 'countdown',
+  FADELAST: 'fadelast',
+  OOPS: 'oops'
+}
